@@ -1,0 +1,9 @@
+src\minecraft\net\minecraft\src\TcpMasterThread.java:22: warning: [deprecation] stop() in Thread has been deprecated
+                    TcpConnection.func_74457_g(field_74504_a).stop();
+                                                             ^
+src\minecraft\net\minecraft\src\TcpMasterThread.java:31: warning: [deprecation] stop() in Thread has been deprecated
+                    TcpConnection.func_74461_h(field_74504_a).stop();
+                                                             ^
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
