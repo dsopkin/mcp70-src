@@ -60,7 +60,7 @@ public class ItemMap extends ItemMapBase
         int k = par3MapData.zCenter;
         int l = MathHelper.floor_double(par2Entity.posX - (double)j) / i + c / 2;
         int i1 = MathHelper.floor_double(par2Entity.posZ - (double)k) / i + c1 / 2;
-        int j1 = 128 / i;
+        int j1 = 256 / i;
 
         if (par1World.worldProvider.hasNoSky)
         {
