@@ -105,6 +105,8 @@ public class ComponentVillageHouse2 extends ComponentVillage
                 placeBlockAtCurrentPosition(par1World, Block.stairCompactCobblestone.blockID, getMetadataWithOffset(Block.stairCompactCobblestone.blockID, 3), j, 0, -1, par3StructureBoundingBox);
             }
         }
+        
+        placeDoorAtCurrentPosition(par1World, par3StructureBoundingBox, par2Random, 3, 1, 1, getMetadataWithOffset(Block.doorWood.blockID, 0));
 
         for (int k = 0; k < 7; k++)
         {
