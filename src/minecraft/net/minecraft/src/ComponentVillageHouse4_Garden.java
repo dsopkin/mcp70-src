@@ -115,6 +115,8 @@ public class ComponentVillageHouse4_Garden extends ComponentVillage
         }
 
         placeBlockAtCurrentPosition(par1World, Block.torchWood.blockID, 0, 2, 3, 1, par3StructureBoundingBox);
+        placeDoorAtCurrentPosition(par1World, par3StructureBoundingBox, par2Random, 2, 1, 0, getMetadataWithOffset(Block.doorWood.blockID, 1));
+
 
         for (int j = 0; j < 5; j++)
         {
