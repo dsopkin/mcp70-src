@@ -37,7 +37,7 @@ public class ItemMap extends ItemMapBase
             mapdata = new MapData(s1);
             mapdata.xCenter = par2World.getWorldInfo().getSpawnX();
             mapdata.zCenter = par2World.getWorldInfo().getSpawnZ();
-            mapdata.scale = 3;
+            mapdata.scale = 4;
             mapdata.dimension = (byte)par2World.worldProvider.worldType;
             mapdata.markDirty();
             par2World.setItemData(s1, mapdata);
@@ -310,7 +310,7 @@ public class ItemMap extends ItemMapBase
         par2World.setItemData(s, mapdata);
         mapdata.xCenter = MathHelper.floor_double(par3EntityPlayer.posX);
         mapdata.zCenter = MathHelper.floor_double(par3EntityPlayer.posZ);
-        mapdata.scale = 3;
+        mapdata.scale = 4;
         mapdata.dimension = (byte)par2World.worldProvider.worldType;
         mapdata.markDirty();
     }
