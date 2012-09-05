@@ -57,14 +57,11 @@ public class MapGenVillage extends MapGenStructure
 
     protected StructureStart getStructureStart(int par1, int par2)
     {
-        return new StructureVillageStart(worldObj, rand, par1, par2, terrainType);
+        return new StructureVillageStart(worldObj, rand, par1, par2, (int)(300*Math.random()));
     }
 
     static
     {
-        villageSpawnBiomes = Arrays.asList(new BiomeGenBase[]
-                {
-                    BiomeGenBase.plains, BiomeGenBase.desert
-                });
+        villageSpawnBiomes = Arrays.asList(BiomeGenBase.biomeList);
     }
 }
