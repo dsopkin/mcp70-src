@@ -45,6 +45,10 @@ public class RecipesWeapons
                 {
                     " #X", "# X", " #X", 'X', Item.silk, '#', Item.stick
                 });
+        par1CraftingManager.addRecipe(new ItemStack(Item.gun, 1), new Object[]
+                {
+                    "   ", " X ", "   ", 'X', Item.bow
+                });
         par1CraftingManager.addRecipe(new ItemStack(Item.arrow, 4), new Object[]
                 {
                     "X", "#", "Y", 'Y', Item.feather, 'X', Item.flint, '#', Item.stick

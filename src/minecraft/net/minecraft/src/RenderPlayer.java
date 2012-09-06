@@ -265,7 +265,7 @@ public class RenderPlayer extends RenderLiving
                 GL11.glRotatef(45F, 0.0F, 1.0F, 0.0F);
                 GL11.glScalef(f3, -f3, f3);
             }
-            else if (itemstack1.itemID == Item.bow.shiftedIndex)
+            else if (itemstack1.itemID == Item.bow.shiftedIndex || itemstack1.itemID == Item.gun.shiftedIndex)
             {
                 float f4 = 0.625F;
                 GL11.glTranslatef(0.0F, 0.125F, 0.3125F);

@@ -1766,7 +1766,7 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
                 return par1ItemStack.getItem().getIconFromDamageForRenderPass(par1ItemStack.getItemDamage(), par2);
             }
 
-            if (itemInUse != null && par1ItemStack.itemID == Item.bow.shiftedIndex)
+            if (itemInUse != null && (par1ItemStack.itemID == Item.bow.shiftedIndex || par1ItemStack.itemID == Item.gun.shiftedIndex))
             {
                 int j = par1ItemStack.getMaxItemUseDuration() - itemInUseCount;
 

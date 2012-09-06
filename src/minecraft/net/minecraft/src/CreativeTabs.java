@@ -13,7 +13,7 @@ public class CreativeTabs
     public static final CreativeTabs field_78027_g = (new CreativeTabSearch(5, "search")).func_78025_a("search.png");
     public static final CreativeTabs field_78039_h = new CreativeTabFood(6, "food");
     public static final CreativeTabs field_78040_i = new CreativeTabTools(7, "tools");
-    public static final CreativeTabs field_78037_j = new CreativeTabCombat(8, "combat");
+    public static final CreativeTabs COMBAT_CREATIVE_TAB = new CreativeTabCombat(8, "combat");
     public static final CreativeTabs field_78038_k = new CreativeTabBrewing(9, "brewing");
     public static final CreativeTabs field_78035_l = new CreativeTabMaterial(10, "materials");
     public static final CreativeTabs field_78036_m = (new CreativeTabInventory(11, "inventory")).func_78025_a("survival_inv.png").func_78022_j().func_78014_h();
@@ -50,10 +50,10 @@ public class CreativeTabs
 
     public Item func_78016_d()
     {
-        return Item.itemsList[func_78012_e()];
+        return Item.itemsList[getRepresentativeItemIndex()];
     }
 
-    public int func_78012_e()
+    public int getRepresentativeItemIndex()
     {
         return 1;
     }
@@ -110,7 +110,7 @@ public class CreativeTabs
         {
             Item item = aitem[j];
 
-            if (item != null && item.func_77640_w() == this)
+            if (item != null && item.getMyCreativeTab() == this)
             {
                 item.func_77633_a(item.shiftedIndex, this, par1List);
             }

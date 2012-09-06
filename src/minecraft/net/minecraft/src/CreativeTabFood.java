@@ -7,7 +7,7 @@ final class CreativeTabFood extends CreativeTabs
         super(par1, par2Str);
     }
 
-    public int func_78012_e()
+    public int getRepresentativeItemIndex()
     {
         return Item.appleRed.shiftedIndex;
     }

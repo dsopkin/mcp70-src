@@ -347,7 +347,7 @@ public class BlockDispenser extends BlockContainer
         {
             EntityArrow entityarrow = new EntityArrow(par1World, par9, par11, par13);
             entityarrow.setArrowHeading(par7, 0.10000000149011612D, par8, f, i);
-            entityarrow.field_70251_a = 1;
+            entityarrow.playerOwned = 1;
             par1World.spawnEntityInWorld(entityarrow);
             par1World.playAuxSFX(1002, par4, par5, par6, 0);
             return 1;

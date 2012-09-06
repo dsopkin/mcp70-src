@@ -6,7 +6,7 @@ public class ItemSaddle extends Item
     {
         super(par1);
         maxStackSize = 1;
-        func_77637_a(CreativeTabs.field_78029_e);
+        setCreativeTab(CreativeTabs.field_78029_e);
     }
 
     public boolean func_77646_a(ItemStack par1ItemStack, EntityLiving par2EntityLiving)

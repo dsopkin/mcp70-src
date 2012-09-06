@@ -9,37 +9,37 @@ public class ItemBow extends Item
         super(par1);
         maxStackSize = 1;
         setMaxDamage(384);
-        func_77637_a(CreativeTabs.field_78037_j);
+        setCreativeTab(CreativeTabs.COMBAT_CREATIVE_TAB);
     }
 
     /**
      * called when the player releases the use item button. Args: itemstack, world, entityplayer, itemInUseCount
      */
-    public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int par4)
+    public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int useTime)
     {
         boolean flag = par3EntityPlayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0;
 
         if (flag || par3EntityPlayer.inventory.hasItem(Item.arrow.shiftedIndex))
         {
-            int i = getMaxItemUseDuration(par1ItemStack) - par4;
-            float f = (float)i / 20F;
-            f = (f * f + f * 2.0F) / 3F;
+            int useTimeForgone = getMaxItemUseDuration(par1ItemStack) - useTime;
+            float power = (float)useTimeForgone / 20F;
+            power = (power * power + power * 2.0F) / 3F;
 
-            if ((double)f < 0.10000000000000001D)
+            if ((double)power < 0.10000000000000001D)
             {
-                return;
+                return; //quick click
             }
 
-            if (f > 1.0F)
+            if (power > 1.0F)
             {
-                f = 1.0F;
+                power = 1.0F; //max power
             }
 
-            EntityArrow entityarrow = new EntityArrow(par2World, par3EntityPlayer, f * 2.0F);
+            EntityArrow entityarrow = new EntityArrow(par2World, par3EntityPlayer, power * 2.0F);
 
-            if (f == 1.0F)
+            if (power == 1.0F)
             {
-                entityarrow.func_70243_d(true);
+                entityarrow.setIsMaxPower(true);
             }
 
             int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
@@ -62,11 +62,11 @@ public class ItemBow extends Item
             }
 
             par1ItemStack.damageItem(1, par3EntityPlayer);
-            par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+            par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + power * 0.5F);
 
             if (flag)
             {
-                entityarrow.field_70251_a = 2;
+                entityarrow.playerOwned = 2;
             }
             else
             {

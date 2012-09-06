@@ -7,7 +7,7 @@ public class ItemShears extends Item
         super(par1);
         setMaxStackSize(1);
         setMaxDamage(238);
-        func_77637_a(CreativeTabs.field_78040_i);
+        setCreativeTab(CreativeTabs.field_78040_i);
     }
 
     public boolean func_77660_a(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6, EntityLiving par7EntityLiving)

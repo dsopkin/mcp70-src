@@ -6,7 +6,7 @@ public class ItemSign extends Item
     {
         super(par1);
         maxStackSize = 16;
-        func_77637_a(CreativeTabs.field_78031_c);
+        setCreativeTab(CreativeTabs.field_78031_c);
     }
 
     public boolean func_77648_a(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)

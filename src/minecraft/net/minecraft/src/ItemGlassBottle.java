@@ -5,7 +5,7 @@ public class ItemGlassBottle extends Item
     public ItemGlassBottle(int par1)
     {
         super(par1);
-        func_77637_a(CreativeTabs.field_78038_k);
+        setCreativeTab(CreativeTabs.field_78038_k);
     }
 
     /**

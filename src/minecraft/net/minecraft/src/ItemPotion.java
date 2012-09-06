@@ -15,7 +15,7 @@ public class ItemPotion extends Item
         setMaxStackSize(1);
         setHasSubtypes(true);
         setMaxDamage(0);
-        func_77637_a(CreativeTabs.field_78038_k);
+        setCreativeTab(CreativeTabs.field_78038_k);
     }
 
     /**

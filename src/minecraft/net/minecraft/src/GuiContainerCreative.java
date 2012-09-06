@@ -250,7 +250,7 @@ public class GuiContainerCreative extends InventoryEffectRenderer
         {
             Item item = aitem[j];
 
-            if (item != null && item.func_77640_w() != null)
+            if (item != null && item.getMyCreativeTab() != null)
             {
                 item.func_77633_a(item.shiftedIndex, null, containercreative.itemList);
             }

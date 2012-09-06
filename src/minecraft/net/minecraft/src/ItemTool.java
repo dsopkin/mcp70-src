@@ -21,7 +21,7 @@ public class ItemTool extends Item
         setMaxDamage(par3EnumToolMaterial.getMaxUses());
         efficiencyOnProperMaterial = par3EnumToolMaterial.getEfficiencyOnProperMaterial();
         damageVsEntity = par2 + par3EnumToolMaterial.getDamageVsEntity();
-        func_77637_a(CreativeTabs.field_78040_i);
+        setCreativeTab(CreativeTabs.field_78040_i);
     }
 
     /**

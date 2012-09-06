@@ -156,7 +156,7 @@ public class ItemBlock extends Item
         return Block.blocksList[blockID].getBlockName();
     }
 
-    public CreativeTabs func_77640_w()
+    public CreativeTabs getMyCreativeTab()
     {
         return Block.blocksList[blockID].func_71882_w();
     }

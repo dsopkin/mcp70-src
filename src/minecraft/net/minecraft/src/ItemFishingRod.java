@@ -9,7 +9,7 @@ public class ItemFishingRod extends Item
         super(par1);
         setMaxDamage(64);
         setMaxStackSize(1);
-        func_77637_a(CreativeTabs.field_78040_i);
+        setCreativeTab(CreativeTabs.field_78040_i);
     }
 
     /**

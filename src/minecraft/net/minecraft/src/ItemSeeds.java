@@ -15,7 +15,7 @@ public class ItemSeeds extends Item
         super(par1);
         blockType = par2;
         soilBlockID = par3;
-        func_77637_a(CreativeTabs.field_78035_l);
+        setCreativeTab(CreativeTabs.field_78035_l);
     }
 
     public boolean func_77648_a(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)

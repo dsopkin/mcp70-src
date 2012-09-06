@@ -8,7 +8,7 @@ public class ItemMonsterPlacer extends Item
     {
         super(par1);
         setHasSubtypes(true);
-        func_77637_a(CreativeTabs.field_78026_f);
+        setCreativeTab(CreativeTabs.field_78026_f);
     }
 
     public String getItemDisplayName(ItemStack par1ItemStack)

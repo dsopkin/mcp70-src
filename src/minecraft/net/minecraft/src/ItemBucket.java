@@ -12,7 +12,7 @@ public class ItemBucket extends Item
         super(par1);
         maxStackSize = 1;
         isFull = par2;
-        func_77637_a(CreativeTabs.field_78026_f);
+        setCreativeTab(CreativeTabs.field_78026_f);
     }
 
     /**

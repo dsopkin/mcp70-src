@@ -5,7 +5,7 @@ public class ItemRedstone extends Item
     public ItemRedstone(int par1)
     {
         super(par1);
-        func_77637_a(CreativeTabs.field_78028_d);
+        setCreativeTab(CreativeTabs.field_78028_d);
     }
 
     public boolean func_77648_a(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)

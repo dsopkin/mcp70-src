@@ -7,7 +7,7 @@ final class CreativeTabInventory extends CreativeTabs
         super(par1, par2Str);
     }
 
-    public int func_78012_e()
+    public int getRepresentativeItemIndex()
     {
         return Block.chest.blockID;
     }

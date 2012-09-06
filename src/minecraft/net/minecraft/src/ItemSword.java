@@ -11,7 +11,7 @@ public class ItemSword extends Item
         toolMaterial = par2EnumToolMaterial;
         maxStackSize = 1;
         setMaxDamage(par2EnumToolMaterial.getMaxUses());
-        func_77637_a(CreativeTabs.field_78037_j);
+        setCreativeTab(CreativeTabs.COMBAT_CREATIVE_TAB);
         weaponDamage = 4 + par2EnumToolMaterial.getDamageVsEntity();
     }
 

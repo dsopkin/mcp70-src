@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Item
 {
-    private CreativeTabs field_77701_a;
+    private CreativeTabs myCreativeTab;
 
     /** The RNG used by the Item subclasses. */
     protected static Random itemRand = new Random();
@@ -17,6 +17,7 @@ public class Item
     public static Item flintAndSteel = (new ItemFlintAndSteel(3)).setIconCoord(5, 0).setItemName("flintAndSteel");
     public static Item appleRed = (new ItemFood(4, 4, 0.3F, false)).setIconCoord(10, 0).setItemName("apple");
     public static Item bow = (new ItemBow(5)).setIconCoord(5, 1).setItemName("bow");
+    public static Item gun = (new ItemGun(133)).setIconCoord(5, 1).setItemName("gun");
     public static Item arrow;
     public static Item coal = (new ItemCoal(7)).setIconCoord(7, 0).setItemName("coal");
     public static Item field_77702_n;
@@ -193,23 +194,23 @@ public class Item
     /** full name of item from language file */
     private String itemName;
 
-    protected Item(int par1)
+    protected Item(int index)
     {
-        field_77701_a = null;
+        myCreativeTab = null;
         maxStackSize = 64;
         maxDamage = 0;
         bFull3D = false;
         hasSubtypes = false;
         containerItem = null;
         potionEffect = null;
-        shiftedIndex = 256 + par1;
+        shiftedIndex = 256 + index;
 
-        if (itemsList[256 + par1] != null)
+        if (itemsList[256 + index] != null)
         {
-            System.out.println((new StringBuilder()).append("CONFLICT @ ").append(par1).toString());
+            System.out.println((new StringBuilder()).append("CONFLICT @ ").append(index).toString());
         }
 
-        itemsList[256 + par1] = this;
+        itemsList[256 + index] = this;
     }
 
     /**
@@ -622,14 +623,14 @@ public class Item
         par3List.add(new ItemStack(par1, 1, 0));
     }
 
-    public CreativeTabs func_77640_w()
+    public CreativeTabs getMyCreativeTab()
     {
-        return field_77701_a;
+        return myCreativeTab;
     }
 
-    public Item func_77637_a(CreativeTabs par1CreativeTabs)
+    public Item setCreativeTab(CreativeTabs par1CreativeTabs)
     {
-        field_77701_a = par1CreativeTabs;
+        myCreativeTab = par1CreativeTabs;
         return this;
     }
 
@@ -638,10 +639,10 @@ public class Item
         shovelSteel = (new ItemSpade(0, EnumToolMaterial.IRON)).setIconCoord(2, 5).setItemName("shovelIron");
         pickaxeSteel = (new ItemPickaxe(1, EnumToolMaterial.IRON)).setIconCoord(2, 6).setItemName("pickaxeIron");
         axeSteel = (new ItemAxe(2, EnumToolMaterial.IRON)).setIconCoord(2, 7).setItemName("hatchetIron");
-        arrow = (new Item(6)).setIconCoord(5, 2).setItemName("arrow").func_77637_a(CreativeTabs.field_78037_j);
-        field_77702_n = (new Item(8)).setIconCoord(7, 3).setItemName("diamond").func_77637_a(CreativeTabs.field_78035_l);
-        ingotIron = (new Item(9)).setIconCoord(7, 1).setItemName("ingotIron").func_77637_a(CreativeTabs.field_78035_l);
-        ingotGold = (new Item(10)).setIconCoord(7, 2).setItemName("ingotGold").func_77637_a(CreativeTabs.field_78035_l);
+        arrow = (new Item(6)).setIconCoord(5, 2).setItemName("arrow").setCreativeTab(CreativeTabs.COMBAT_CREATIVE_TAB);
+        field_77702_n = (new Item(8)).setIconCoord(7, 3).setItemName("diamond").setCreativeTab(CreativeTabs.field_78035_l);
+        ingotIron = (new Item(9)).setIconCoord(7, 1).setItemName("ingotIron").setCreativeTab(CreativeTabs.field_78035_l);
+        ingotGold = (new Item(10)).setIconCoord(7, 2).setItemName("ingotGold").setCreativeTab(CreativeTabs.field_78035_l);
         swordSteel = (new ItemSword(11, EnumToolMaterial.IRON)).setIconCoord(2, 4).setItemName("swordIron");
         swordWood = (new ItemSword(12, EnumToolMaterial.WOOD)).setIconCoord(0, 4).setItemName("swordWood");
         shovelWood = (new ItemSpade(13, EnumToolMaterial.WOOD)).setIconCoord(0, 5).setItemName("shovelWood");
@@ -655,22 +656,22 @@ public class Item
         shovelDiamond = (new ItemSpade(21, EnumToolMaterial.EMERALD)).setIconCoord(3, 5).setItemName("shovelDiamond");
         pickaxeDiamond = (new ItemPickaxe(22, EnumToolMaterial.EMERALD)).setIconCoord(3, 6).setItemName("pickaxeDiamond");
         axeDiamond = (new ItemAxe(23, EnumToolMaterial.EMERALD)).setIconCoord(3, 7).setItemName("hatchetDiamond");
-        stick = (new Item(24)).setIconCoord(5, 3).setFull3D().setItemName("stick").func_77637_a(CreativeTabs.field_78035_l);
-        bowlEmpty = (new Item(25)).setIconCoord(7, 4).setItemName("bowl").func_77637_a(CreativeTabs.field_78035_l);
+        stick = (new Item(24)).setIconCoord(5, 3).setFull3D().setItemName("stick").setCreativeTab(CreativeTabs.field_78035_l);
+        bowlEmpty = (new Item(25)).setIconCoord(7, 4).setItemName("bowl").setCreativeTab(CreativeTabs.field_78035_l);
         swordGold = (new ItemSword(27, EnumToolMaterial.GOLD)).setIconCoord(4, 4).setItemName("swordGold");
         shovelGold = (new ItemSpade(28, EnumToolMaterial.GOLD)).setIconCoord(4, 5).setItemName("shovelGold");
         pickaxeGold = (new ItemPickaxe(29, EnumToolMaterial.GOLD)).setIconCoord(4, 6).setItemName("pickaxeGold");
         axeGold = (new ItemAxe(30, EnumToolMaterial.GOLD)).setIconCoord(4, 7).setItemName("hatchetGold");
-        silk = (new ItemReed(31, Block.field_72062_bU)).setIconCoord(8, 0).setItemName("string").func_77637_a(CreativeTabs.field_78035_l);
-        feather = (new Item(32)).setIconCoord(8, 1).setItemName("feather").func_77637_a(CreativeTabs.field_78035_l);
-        gunpowder = (new Item(33)).setIconCoord(8, 2).setItemName("sulphur").setPotionEffect(PotionHelper.gunpowderEffect).func_77637_a(CreativeTabs.field_78035_l);
+        silk = (new ItemReed(31, Block.field_72062_bU)).setIconCoord(8, 0).setItemName("string").setCreativeTab(CreativeTabs.field_78035_l);
+        feather = (new Item(32)).setIconCoord(8, 1).setItemName("feather").setCreativeTab(CreativeTabs.field_78035_l);
+        gunpowder = (new Item(33)).setIconCoord(8, 2).setItemName("sulphur").setPotionEffect(PotionHelper.gunpowderEffect).setCreativeTab(CreativeTabs.field_78035_l);
         hoeWood = (new ItemHoe(34, EnumToolMaterial.WOOD)).setIconCoord(0, 8).setItemName("hoeWood");
         hoeStone = (new ItemHoe(35, EnumToolMaterial.STONE)).setIconCoord(1, 8).setItemName("hoeStone");
         hoeSteel = (new ItemHoe(36, EnumToolMaterial.IRON)).setIconCoord(2, 8).setItemName("hoeIron");
         hoeDiamond = (new ItemHoe(37, EnumToolMaterial.EMERALD)).setIconCoord(3, 8).setItemName("hoeDiamond");
         hoeGold = (new ItemHoe(38, EnumToolMaterial.GOLD)).setIconCoord(4, 8).setItemName("hoeGold");
         seeds = (new ItemSeeds(39, Block.crops.blockID, Block.tilledField.blockID)).setIconCoord(9, 0).setItemName("seeds");
-        wheat = (new Item(40)).setIconCoord(9, 1).setItemName("wheat").func_77637_a(CreativeTabs.field_78035_l);
+        wheat = (new Item(40)).setIconCoord(9, 1).setItemName("wheat").setCreativeTab(CreativeTabs.field_78035_l);
         helmetLeather = (new ItemArmor(42, EnumArmorMaterial.CLOTH, 0, 0)).setIconCoord(0, 0).setItemName("helmetCloth");
         plateLeather = (new ItemArmor(43, EnumArmorMaterial.CLOTH, 0, 1)).setIconCoord(0, 1).setItemName("chestplateCloth");
         legsLeather = (new ItemArmor(44, EnumArmorMaterial.CLOTH, 0, 2)).setIconCoord(0, 2).setItemName("leggingsCloth");
@@ -691,7 +692,7 @@ public class Item
         plateGold = (new ItemArmor(59, EnumArmorMaterial.GOLD, 4, 1)).setIconCoord(4, 1).setItemName("chestplateGold");
         legsGold = (new ItemArmor(60, EnumArmorMaterial.GOLD, 4, 2)).setIconCoord(4, 2).setItemName("leggingsGold");
         bootsGold = (new ItemArmor(61, EnumArmorMaterial.GOLD, 4, 3)).setIconCoord(4, 3).setItemName("bootsGold");
-        flint = (new Item(62)).setIconCoord(6, 0).setItemName("flint").func_77637_a(CreativeTabs.field_78035_l);
+        flint = (new Item(62)).setIconCoord(6, 0).setItemName("flint").setCreativeTab(CreativeTabs.field_78035_l);
         appleGold = (new ItemAppleGold(66, 4, 1.2F, false)).setAlwaysEdible().setPotionEffect(Potion.regeneration.id, 5, 0, 1.0F).setIconCoord(11, 0).setItemName("appleGold");
         doorWood = (new ItemDoor(68, Material.wood)).setIconCoord(11, 2).setItemName("doorWood");
         bucketEmpty = (new ItemBucket(69, 0)).setIconCoord(10, 4).setItemName("bucket").setMaxStackSize(16);
@@ -699,38 +700,38 @@ public class Item
         bucketLava = (new ItemBucket(71, Block.lavaMoving.blockID)).setIconCoord(12, 4).setItemName("bucketLava").setContainerItem(bucketEmpty);
         doorSteel = (new ItemDoor(74, Material.iron)).setIconCoord(12, 2).setItemName("doorIron");
         redstone = (new ItemRedstone(75)).setIconCoord(8, 3).setItemName("redstone").setPotionEffect(PotionHelper.redstoneEffect);
-        leather = (new Item(78)).setIconCoord(7, 6).setItemName("leather").func_77637_a(CreativeTabs.field_78035_l);
+        leather = (new Item(78)).setIconCoord(7, 6).setItemName("leather").setCreativeTab(CreativeTabs.field_78035_l);
         bucketMilk = (new ItemBucketMilk(79)).setIconCoord(13, 4).setItemName("milk").setContainerItem(bucketEmpty);
-        brick = (new Item(80)).setIconCoord(6, 1).setItemName("brick").func_77637_a(CreativeTabs.field_78035_l);
-        clay = (new Item(81)).setIconCoord(9, 3).setItemName("clay").func_77637_a(CreativeTabs.field_78035_l);
-        reed = (new ItemReed(82, Block.reed)).setIconCoord(11, 1).setItemName("reeds").func_77637_a(CreativeTabs.field_78035_l);
-        paper = (new Item(83)).setIconCoord(10, 3).setItemName("paper").func_77637_a(CreativeTabs.field_78026_f);
-        book = (new Item(84)).setIconCoord(11, 3).setItemName("book").func_77637_a(CreativeTabs.field_78026_f);
-        slimeBall = (new Item(85)).setIconCoord(14, 1).setItemName("slimeball").func_77637_a(CreativeTabs.field_78026_f);
-        compass = (new Item(89)).setIconCoord(6, 3).setItemName("compass").func_77637_a(CreativeTabs.field_78040_i);
-        pocketSundial = (new Item(91)).setIconCoord(6, 4).setItemName("clock").func_77637_a(CreativeTabs.field_78040_i);
-        lightStoneDust = (new Item(92)).setIconCoord(9, 4).setItemName("yellowDust").setPotionEffect(PotionHelper.glowstoneEffect).func_77637_a(CreativeTabs.field_78035_l);
-        bone = (new Item(96)).setIconCoord(12, 1).setItemName("bone").setFull3D().func_77637_a(CreativeTabs.field_78026_f);
-        sugar = (new Item(97)).setIconCoord(13, 0).setItemName("sugar").setPotionEffect(PotionHelper.sugarEffect).func_77637_a(CreativeTabs.field_78035_l);
-        cake = (new ItemReed(98, Block.cake)).setMaxStackSize(1).setIconCoord(13, 1).setItemName("cake").func_77637_a(CreativeTabs.field_78039_h);
-        redstoneRepeater = (new ItemReed(100, Block.redstoneRepeaterIdle)).setIconCoord(6, 5).setItemName("diode").func_77637_a(CreativeTabs.field_78028_d);
+        brick = (new Item(80)).setIconCoord(6, 1).setItemName("brick").setCreativeTab(CreativeTabs.field_78035_l);
+        clay = (new Item(81)).setIconCoord(9, 3).setItemName("clay").setCreativeTab(CreativeTabs.field_78035_l);
+        reed = (new ItemReed(82, Block.reed)).setIconCoord(11, 1).setItemName("reeds").setCreativeTab(CreativeTabs.field_78035_l);
+        paper = (new Item(83)).setIconCoord(10, 3).setItemName("paper").setCreativeTab(CreativeTabs.field_78026_f);
+        book = (new Item(84)).setIconCoord(11, 3).setItemName("book").setCreativeTab(CreativeTabs.field_78026_f);
+        slimeBall = (new Item(85)).setIconCoord(14, 1).setItemName("slimeball").setCreativeTab(CreativeTabs.field_78026_f);
+        compass = (new Item(89)).setIconCoord(6, 3).setItemName("compass").setCreativeTab(CreativeTabs.field_78040_i);
+        pocketSundial = (new Item(91)).setIconCoord(6, 4).setItemName("clock").setCreativeTab(CreativeTabs.field_78040_i);
+        lightStoneDust = (new Item(92)).setIconCoord(9, 4).setItemName("yellowDust").setPotionEffect(PotionHelper.glowstoneEffect).setCreativeTab(CreativeTabs.field_78035_l);
+        bone = (new Item(96)).setIconCoord(12, 1).setItemName("bone").setFull3D().setCreativeTab(CreativeTabs.field_78026_f);
+        sugar = (new Item(97)).setIconCoord(13, 0).setItemName("sugar").setPotionEffect(PotionHelper.sugarEffect).setCreativeTab(CreativeTabs.field_78035_l);
+        cake = (new ItemReed(98, Block.cake)).setMaxStackSize(1).setIconCoord(13, 1).setItemName("cake").setCreativeTab(CreativeTabs.field_78039_h);
+        redstoneRepeater = (new ItemReed(100, Block.redstoneRepeaterIdle)).setIconCoord(6, 5).setItemName("diode").setCreativeTab(CreativeTabs.field_78028_d);
         pumpkinSeeds = (new ItemSeeds(105, Block.pumpkinStem.blockID, Block.tilledField.blockID)).setIconCoord(13, 3).setItemName("seeds_pumpkin");
         melonSeeds = (new ItemSeeds(106, Block.melonStem.blockID, Block.tilledField.blockID)).setIconCoord(14, 3).setItemName("seeds_melon");
         chickenRaw = (new ItemFood(109, 2, 0.3F, true)).setPotionEffect(Potion.hunger.id, 30, 0, 0.3F).setIconCoord(9, 7).setItemName("chickenRaw");
         rottenFlesh = (new ItemFood(111, 4, 0.1F, true)).setPotionEffect(Potion.hunger.id, 30, 0, 0.8F).setIconCoord(11, 5).setItemName("rottenFlesh");
-        blazeRod = (new Item(113)).setIconCoord(12, 6).setItemName("blazeRod").func_77637_a(CreativeTabs.field_78035_l);
-        ghastTear = (new Item(114)).setIconCoord(11, 7).setItemName("ghastTear").setPotionEffect(PotionHelper.ghastTearEffect).func_77637_a(CreativeTabs.field_78038_k);
-        goldNugget = (new Item(115)).setIconCoord(12, 7).setItemName("goldNugget").func_77637_a(CreativeTabs.field_78035_l);
+        blazeRod = (new Item(113)).setIconCoord(12, 6).setItemName("blazeRod").setCreativeTab(CreativeTabs.field_78035_l);
+        ghastTear = (new Item(114)).setIconCoord(11, 7).setItemName("ghastTear").setPotionEffect(PotionHelper.ghastTearEffect).setCreativeTab(CreativeTabs.field_78038_k);
+        goldNugget = (new Item(115)).setIconCoord(12, 7).setItemName("goldNugget").setCreativeTab(CreativeTabs.field_78035_l);
         netherStalkSeeds = (new ItemSeeds(116, Block.netherStalk.blockID, Block.slowSand.blockID)).setIconCoord(13, 7).setItemName("netherStalkSeeds").setPotionEffect("+4");
         spiderEye = (new ItemFood(119, 2, 0.8F, false)).setPotionEffect(Potion.poison.id, 5, 0, 1.0F).setIconCoord(11, 8).setItemName("spiderEye").setPotionEffect(PotionHelper.spiderEyeEffect);
-        fermentedSpiderEye = (new Item(120)).setIconCoord(10, 8).setItemName("fermentedSpiderEye").setPotionEffect(PotionHelper.fermentedSpiderEyeEffect).func_77637_a(CreativeTabs.field_78038_k);
-        blazePowder = (new Item(121)).setIconCoord(13, 9).setItemName("blazePowder").setPotionEffect(PotionHelper.blazePowderEffect).func_77637_a(CreativeTabs.field_78038_k);
-        magmaCream = (new Item(122)).setIconCoord(13, 10).setItemName("magmaCream").setPotionEffect(PotionHelper.magmaCreamEffect).func_77637_a(CreativeTabs.field_78038_k);
-        brewingStand = (new ItemReed(123, Block.brewingStand)).setIconCoord(12, 10).setItemName("brewingStand").func_77637_a(CreativeTabs.field_78038_k);
-        cauldron = (new ItemReed(124, Block.cauldron)).setIconCoord(12, 9).setItemName("cauldron").func_77637_a(CreativeTabs.field_78038_k);
-        speckledMelon = (new Item(126)).setIconCoord(9, 8).setItemName("speckledMelon").setPotionEffect(PotionHelper.speckledMelonEffect).func_77637_a(CreativeTabs.field_78038_k);
-        field_77821_bF = (new ItemWritableBook(130)).setIconCoord(11, 11).setItemName("writingBook").func_77637_a(CreativeTabs.field_78026_f);
-        diamond = (new Item(132)).setIconCoord(10, 11).setItemName("emerald").func_77637_a(CreativeTabs.field_78035_l);
+        fermentedSpiderEye = (new Item(120)).setIconCoord(10, 8).setItemName("fermentedSpiderEye").setPotionEffect(PotionHelper.fermentedSpiderEyeEffect).setCreativeTab(CreativeTabs.field_78038_k);
+        blazePowder = (new Item(121)).setIconCoord(13, 9).setItemName("blazePowder").setPotionEffect(PotionHelper.blazePowderEffect).setCreativeTab(CreativeTabs.field_78038_k);
+        magmaCream = (new Item(122)).setIconCoord(13, 10).setItemName("magmaCream").setPotionEffect(PotionHelper.magmaCreamEffect).setCreativeTab(CreativeTabs.field_78038_k);
+        brewingStand = (new ItemReed(123, Block.brewingStand)).setIconCoord(12, 10).setItemName("brewingStand").setCreativeTab(CreativeTabs.field_78038_k);
+        cauldron = (new ItemReed(124, Block.cauldron)).setIconCoord(12, 9).setItemName("cauldron").setCreativeTab(CreativeTabs.field_78038_k);
+        speckledMelon = (new Item(126)).setIconCoord(9, 8).setItemName("speckledMelon").setPotionEffect(PotionHelper.speckledMelonEffect).setCreativeTab(CreativeTabs.field_78038_k);
+        field_77821_bF = (new ItemWritableBook(130)).setIconCoord(11, 11).setItemName("writingBook").setCreativeTab(CreativeTabs.field_78026_f);
+        diamond = (new Item(132)).setIconCoord(10, 11).setItemName("emerald").setCreativeTab(CreativeTabs.field_78035_l);
         StatList.initStats();
     }
 }

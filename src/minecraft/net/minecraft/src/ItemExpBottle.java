@@ -7,7 +7,7 @@ public class ItemExpBottle extends Item
     public ItemExpBottle(int par1)
     {
         super(par1);
-        func_77637_a(CreativeTabs.field_78026_f);
+        setCreativeTab(CreativeTabs.field_78026_f);
     }
 
     public boolean hasEffect(ItemStack par1ItemStack)

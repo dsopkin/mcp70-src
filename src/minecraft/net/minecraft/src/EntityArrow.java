@@ -10,7 +10,7 @@ public class EntityArrow extends Entity
     private int inTile;
     private int inData;
     private boolean inGround;
-    public int field_70251_a;
+    public int playerOwned;
 
     /** Seems to be some sort of timer for animating an arrow. */
     public int arrowShake;
@@ -33,14 +33,14 @@ public class EntityArrow extends Entity
         inTile = 0;
         inData = 0;
         inGround = false;
-        field_70251_a = 0;
+        playerOwned = 0;
         arrowShake = 0;
         ticksInAir = 0;
         damage = 2D;
         setSize(0.5F, 0.5F);
     }
 
-    public EntityArrow(World par1World, double par2, double par4, double par6)
+    public EntityArrow(World par1World, double posX, double posY, double posZ)
     {
         super(par1World);
         xTile = -1;
@@ -49,16 +49,16 @@ public class EntityArrow extends Entity
         inTile = 0;
         inData = 0;
         inGround = false;
-        field_70251_a = 0;
+        playerOwned = 0;
         arrowShake = 0;
         ticksInAir = 0;
         damage = 2D;
         setSize(0.5F, 0.5F);
-        setPosition(par2, par4, par6);
+        setPosition(posX, posY, posZ);
         yOffset = 0.0F;
     }
 
-    public EntityArrow(World par1World, EntityLiving par2EntityLiving, EntityLiving par3EntityLiving, float par4, float par5)
+    public EntityArrow(World par1World, EntityLiving par2EntityOwner, EntityLiving par3EntityTarget, float par4, float par5)
     {
         super(par1World);
         xTile = -1;
@@ -67,42 +67,42 @@ public class EntityArrow extends Entity
         inTile = 0;
         inData = 0;
         inGround = false;
-        field_70251_a = 0;
+        playerOwned = 0;
         arrowShake = 0;
         ticksInAir = 0;
         damage = 2D;
-        shootingEntity = par2EntityLiving;
+        shootingEntity = par2EntityOwner;
 
-        if (par2EntityLiving instanceof EntityPlayer)
+        if (par2EntityOwner instanceof EntityPlayer)
         {
-            field_70251_a = 1;
+            playerOwned = 1;
         }
 
-        posY = (par2EntityLiving.posY + (double)par2EntityLiving.getEyeHeight()) - 0.10000000149011612D;
-        double d = par3EntityLiving.posX - par2EntityLiving.posX;
-        double d1 = (par3EntityLiving.posY + (double)par3EntityLiving.getEyeHeight()) - 0.69999998807907104D - posY;
-        double d2 = par3EntityLiving.posZ - par2EntityLiving.posZ;
-        double d3 = MathHelper.sqrt_double(d * d + d2 * d2);
+        posY = (par2EntityOwner.posY + (double)par2EntityOwner.getEyeHeight()) - 0.10000000149011612D;
+        double targetXRelArrow = par3EntityTarget.posX - par2EntityOwner.posX;
+        double targetYRelArrow = (par3EntityTarget.posY + (double)par3EntityTarget.getEyeHeight()) - 0.69999998807907104D - posY;
+        double targetZRelArrow = par3EntityTarget.posZ - par2EntityOwner.posZ;
+        double horizDist2Target = MathHelper.sqrt_double(targetXRelArrow * targetXRelArrow + targetZRelArrow * targetZRelArrow);
 
-        if (d3 < 9.9999999999999995E-008D)
+        if (horizDist2Target < 9.9999999999999995E-008D)
         {
             return;
         }
         else
         {
-            float f = (float)((Math.atan2(d2, d) * 180D) / Math.PI) - 90F;
-            float f1 = (float)(-((Math.atan2(d1, d3) * 180D) / Math.PI));
-            double d4 = d / d3;
-            double d5 = d2 / d3;
-            setLocationAndAngles(par2EntityLiving.posX + d4, posY, par2EntityLiving.posZ + d5, f, f1);
+            float flatTheta = (float)((Math.atan2(targetZRelArrow, targetXRelArrow) * 180D) / Math.PI) - 90F;
+            float phiFromHoriz = (float)(-((Math.atan2(targetYRelArrow, horizDist2Target) * 180D) / Math.PI));
+            double d4 = targetXRelArrow / horizDist2Target;
+            double d5 = targetZRelArrow / horizDist2Target;
+            setLocationAndAngles(par2EntityOwner.posX + d4, posY, par2EntityOwner.posZ + d5, flatTheta, phiFromHoriz);
             yOffset = 0.0F;
-            float f2 = (float)d3 * 0.2F;
-            setArrowHeading(d, d1 + (double)f2, d2, par4, par5);
+            float f2 = (float)horizDist2Target * 0.2F;
+            setArrowHeading(targetXRelArrow, targetYRelArrow + (double)f2, targetZRelArrow, par4, par5);
             return;
         }
     }
 
-    public EntityArrow(World par1World, EntityLiving par2EntityLiving, float par3)
+    public EntityArrow(World par1World, EntityLiving par2EntityLiving, float power)
     {
         super(par1World);
         xTile = -1;
@@ -111,7 +111,7 @@ public class EntityArrow extends Entity
         inTile = 0;
         inData = 0;
         inGround = false;
-        field_70251_a = 0;
+        playerOwned = 0;
         arrowShake = 0;
         ticksInAir = 0;
         damage = 2D;
@@ -119,7 +119,7 @@ public class EntityArrow extends Entity
 
         if (par2EntityLiving instanceof EntityPlayer)
         {
-            field_70251_a = 1;
+            playerOwned = 1;
         }
 
         setSize(0.5F, 0.5F);
@@ -132,7 +132,7 @@ public class EntityArrow extends Entity
         motionX = -MathHelper.sin((rotationYaw / 180F) * (float)Math.PI) * MathHelper.cos((rotationPitch / 180F) * (float)Math.PI);
         motionZ = MathHelper.cos((rotationYaw / 180F) * (float)Math.PI) * MathHelper.cos((rotationPitch / 180F) * (float)Math.PI);
         motionY = -MathHelper.sin((rotationPitch / 180F) * (float)Math.PI);
-        setArrowHeading(motionX, motionY, motionZ, par3 * 1.5F, 1.0F);
+        setArrowHeading(motionX, motionY, motionZ, power * 1.5F, 1.0F);
     }
 
     protected void entityInit()
@@ -380,7 +380,7 @@ public class EntityArrow extends Entity
                 worldObj.playSoundAtEntity(this, "random.bowhit", 1.0F, 1.2F / (rand.nextFloat() * 0.2F + 0.9F));
                 inGround = true;
                 arrowShake = 7;
-                func_70243_d(false);
+                setIsMaxPower(false);
             }
         }
 
@@ -442,7 +442,7 @@ public class EntityArrow extends Entity
         par1NBTTagCompound.setByte("inData", (byte)inData);
         par1NBTTagCompound.setByte("shake", (byte)arrowShake);
         par1NBTTagCompound.setByte("inGround", (byte)(inGround ? 1 : 0));
-        par1NBTTagCompound.setByte("pickup", (byte)field_70251_a);
+        par1NBTTagCompound.setByte("pickup", (byte)playerOwned);
         par1NBTTagCompound.setDouble("damage", damage);
     }
 
@@ -466,11 +466,11 @@ public class EntityArrow extends Entity
 
         if (par1NBTTagCompound.hasKey("pickup"))
         {
-            field_70251_a = par1NBTTagCompound.getByte("pickup");
+            playerOwned = par1NBTTagCompound.getByte("pickup");
         }
         else if (par1NBTTagCompound.hasKey("player"))
         {
-            field_70251_a = par1NBTTagCompound.getBoolean("player") ? 1 : 0;
+            playerOwned = par1NBTTagCompound.getBoolean("player") ? 1 : 0;
         }
     }
 
@@ -484,9 +484,9 @@ public class EntityArrow extends Entity
             return;
         }
 
-        boolean flag = field_70251_a == 1 || field_70251_a == 2 && par1EntityPlayer.capabilities.isCreativeMode;
+        boolean flag = playerOwned == 1 || playerOwned == 2 && par1EntityPlayer.capabilities.isCreativeMode;
 
-        if (field_70251_a == 1 && !par1EntityPlayer.inventory.addItemStackToInventory(new ItemStack(Item.arrow, 1)))
+        if (playerOwned == 1 && !par1EntityPlayer.inventory.addItemStackToInventory(new ItemStack(Item.arrow, 1)))
         {
             flag = false;
         }
@@ -530,7 +530,7 @@ public class EntityArrow extends Entity
         return false;
     }
 
-    public void func_70243_d(boolean par1)
+    public void setIsMaxPower(boolean par1)
     {
         byte byte0 = dataWatcher.getWatchableObjectByte(16);
 

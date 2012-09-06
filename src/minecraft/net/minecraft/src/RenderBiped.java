@@ -40,7 +40,7 @@ public class RenderBiped extends RenderLiving
                 GL11.glRotatef(45F, 0.0F, 1.0F, 0.0F);
                 GL11.glScalef(f, -f, f);
             }
-            else if (itemstack.itemID == Item.bow.shiftedIndex)
+            else if (itemstack.itemID == Item.bow.shiftedIndex || itemstack.itemID == Item.gun.shiftedIndex)
             {
                 float f1 = 0.625F;
                 GL11.glTranslatef(0.0F, 0.125F, 0.3125F);

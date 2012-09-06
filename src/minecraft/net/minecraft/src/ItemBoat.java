@@ -9,7 +9,7 @@ public class ItemBoat extends Item
     {
         super(par1);
         maxStackSize = 1;
-        func_77637_a(CreativeTabs.field_78029_e);
+        setCreativeTab(CreativeTabs.field_78029_e);
     }
 
     /**

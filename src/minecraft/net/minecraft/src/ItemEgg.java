@@ -8,7 +8,7 @@ public class ItemEgg extends Item
     {
         super(par1);
         maxStackSize = 16;
-        func_77637_a(CreativeTabs.field_78035_l);
+        setCreativeTab(CreativeTabs.field_78035_l);
     }
 
     /**

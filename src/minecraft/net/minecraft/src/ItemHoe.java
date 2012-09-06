@@ -10,7 +10,7 @@ public class ItemHoe extends Item
         field_77843_a = par2EnumToolMaterial;
         maxStackSize = 1;
         setMaxDamage(par2EnumToolMaterial.getMaxUses());
-        func_77637_a(CreativeTabs.field_78040_i);
+        setCreativeTab(CreativeTabs.field_78040_i);
     }
 
     public boolean func_77648_a(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)

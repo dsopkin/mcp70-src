@@ -9,7 +9,7 @@ public class ItemCoal extends Item
         super(par1);
         setHasSubtypes(true);
         setMaxDamage(0);
-        func_77637_a(CreativeTabs.field_78035_l);
+        setCreativeTab(CreativeTabs.field_78035_l);
     }
 
     public String getItemNameIS(ItemStack par1ItemStack)

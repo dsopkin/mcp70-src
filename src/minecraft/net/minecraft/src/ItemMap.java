@@ -6,7 +6,7 @@ public class ItemMap extends ItemMapBase
     {
         super(par1);
         setMaxStackSize(1);
-        func_77637_a(CreativeTabs.field_78026_f);
+        setCreativeTab(CreativeTabs.field_78026_f);
     }
 
     public static MapData getMPMapData(short par0, World par1World)
