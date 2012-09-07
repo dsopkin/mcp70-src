@@ -1,0 +1,12 @@
+{
+  "C:\\Program Files\\Java\\jre7\\lib\\rt.jar": {
+    "coordinate": "jre:jre:zip:call:1.0.0",
+    "location": "C:\\Program Files\\Java\\jre7\\lib\\rt.jar",
+    "status": "RESOLVED"
+  },
+  "C:\\Users\\Barion\\Documents\\GitHub\\mcp70-src\\src\\minecraft": {
+    "location": "C:\\Users\\Barion\\Documents\\GitHub\\mcp70-src\\src\\minecraft",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\Barion\\Documents\\GitHub\\mcp70-src\\src\\minecraft\u0027. Skipped."
+  }
+}

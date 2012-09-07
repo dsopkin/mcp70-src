@@ -17,7 +17,7 @@ public class Item
     public static Item flintAndSteel = (new ItemFlintAndSteel(3)).setIconCoord(5, 0).setItemName("flintAndSteel");
     public static Item appleRed = (new ItemFood(4, 4, 0.3F, false)).setIconCoord(10, 0).setItemName("apple");
     public static Item bow = (new ItemBow(5)).setIconCoord(5, 1).setItemName("bow");
-    public static Item gun = (new ItemGun(133)).setIconCoord(5, 1).setItemName("gun");
+    public static Item gun = (new ItemGun(1000)).setIconCoord(5, 1).setItemName("gun");
     public static Item arrow;
     public static Item coal = (new ItemCoal(7)).setIconCoord(7, 0).setItemName("coal");
     public static Item field_77702_n;
@@ -190,10 +190,13 @@ public class Item
     protected boolean hasSubtypes;
     private Item containerItem;
     private String potionEffect;
+    
+    /** ItemID seed for items added by nmg43*/
+    private static int availableItemId = 133;
 
     /** full name of item from language file */
     private String itemName;
-
+    
     protected Item(int index)
     {
         myCreativeTab = null;
@@ -211,6 +214,7 @@ public class Item
         }
 
         itemsList[256 + index] = this;
+        System.out.println("index: " + index);
     }
 
     /**
