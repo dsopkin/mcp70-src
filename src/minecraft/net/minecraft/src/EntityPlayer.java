@@ -169,7 +169,8 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
     }
 
     /**
-     * Checks if the entity is currently using an item (e.g., bow, food, sword) by holding down the useItemButton
+     * Checks if the entity is currently using an item (e.g., bow, food, sword) by holding down the useItemButton.
+     * nmg43: Controls movement speed reduction
      */
     public boolean isUsingItem()
     {

@@ -159,9 +159,9 @@ public class EntityPlayerSP extends EntityPlayer
             timeUntilPortal--;
         }
 
-        boolean flag = movementInput.jump;
-        float f = 0.8F;
-        boolean flag1 = movementInput.moveForward >= f;
+        boolean jumping = movementInput.jump;
+        float maxSpeed = 0.8F;
+        boolean sprinting = movementInput.moveForward >= maxSpeed;
         movementInput.updatePlayerMoveState();
 
         if (isUsingItem())
@@ -182,7 +182,7 @@ public class EntityPlayerSP extends EntityPlayer
         pushOutOfBlocks(posX + (double)width * 0.34999999999999998D, boundingBox.minY + 0.5D, posZ + (double)width * 0.34999999999999998D);
         boolean flag2 = (float)getFoodStats().getFoodLevel() > 6F || capabilities.allowFlying;
 
-        if (onGround && !flag1 && movementInput.moveForward >= f && !isSprinting() && flag2 && !isUsingItem() && !isPotionActive(Potion.blindness))
+        if (onGround && !sprinting && movementInput.moveForward >= maxSpeed && !isSprinting() && flag2 && !isUsingItem() && !isPotionActive(Potion.blindness))
         {
             if (sprintToggleTimer == 0)
             {
@@ -200,12 +200,12 @@ public class EntityPlayerSP extends EntityPlayer
             sprintToggleTimer = 0;
         }
 
-        if (isSprinting() && (movementInput.moveForward < f || isCollidedHorizontally || !flag2))
+        if (isSprinting() && (movementInput.moveForward < maxSpeed || isCollidedHorizontally || !flag2))
         {
             setSprinting(false);
         }
 
-        if (capabilities.allowFlying && !flag && movementInput.jump)
+        if (capabilities.allowFlying && !jumping && movementInput.jump)
         {
             if (flyToggleTimer == 0)
             {

@@ -214,7 +214,6 @@ public class Item
         }
 
         itemsList[256 + index] = this;
-        System.out.println("index: " + index);
     }
 
     /**
